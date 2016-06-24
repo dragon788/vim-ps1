@@ -40,9 +40,9 @@ syn match ps1Repeat /\<foreach\>/ nextgroup=ps1Block skipwhite
 syn match ps1Keyword /\<while\>/ nextgroup=ps1Block skipwhite
 syn match ps1Keyword /\<where\>/ nextgroup=ps1Block skipwhite
 
-syn keyword ps1Exception begin process end exit
+syn keyword ps1Exception begin process end exit inlinescript parallel sequence
 syn keyword ps1Keyword try catch finally throw
-syn keyword ps1Keyword return filter in trap param data dynamicparam 
+syn keyword ps1Keyword return filter in trap param data dynamicparam
 syn match ps1Keyword /&/
 syn keyword ps1Constant $true $false $null
 syn match ps1Constant +\$?+
@@ -51,12 +51,15 @@ syn match ps1Constant +\$\$+
 syn match ps1Constant +\$^+
 
 " Keywords reserved for future use
-syn keyword ps1Keyword class define from using var
+syn keyword ps1Keyword define from using var
 
 " Functions and Cmdlets
 syn match ps1Cmdlet /\w\+-\w\+/
 syn keyword ps1Keyword function nextgroup=ps1Function skipwhite
 syn keyword ps1Keyword filter nextgroup=ps1Function skipwhite
+syn keyword ps1Keyword workflow nextgroup=ps1Function skipwhite
+syn keyword ps1Keyword class nextgroup=ps1Function skipwhite
+syn keyword ps1Keyword enum nextgroup=ps1Function skipwhite
 syn match ps1Function /\w\+-*\w*/ contained
 
 " Type declarations
@@ -81,7 +84,7 @@ syn keyword ps1Operator f contained
 
 " Regular Strings
 " These aren't precisely correct and could use some work
-syn region ps1String start=/"/ skip=/`"/ end=/"/ contains=@ps1StringSpecial 
+syn region ps1String start=/"/ skip=/`"/ end=/"/ contains=@ps1StringSpecial
 syn region ps1String start=/'/ skip=/''/ end=/'/
 
 " Here-Strings
